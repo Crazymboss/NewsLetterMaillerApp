@@ -11,7 +11,7 @@ class NewsletterMailer < ApplicationMailer
     template = Template.last
     name = template.name
     abs_path = Rails.root.join("app/views/layouts/#{name}.html.erb")
-    File.write(abs_path, template.body.html_safe)
+    File.write(abs_path, template.header.html_safe + @email.body.html_safe + template.footer.html_safe)
     name
   end
 end

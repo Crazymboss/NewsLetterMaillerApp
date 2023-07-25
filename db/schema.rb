@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_14_070824) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_25_162612) do
   create_table "emails", force: :cascade do |t|
     t.string "subject"
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "template_id"
   end
 
   create_table "subscribers", force: :cascade do |t|
@@ -26,9 +27,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_14_070824) do
 
   create_table "templates", force: :cascade do |t|
     t.string "name"
-    t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "header"
+    t.text "footer"
   end
 
 end

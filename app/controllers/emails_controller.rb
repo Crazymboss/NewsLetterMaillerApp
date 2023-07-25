@@ -5,6 +5,7 @@ class EmailsController < ApplicationController
 
   def new
     @email = Email.new
+    @templates = Template.pluck(:name, :id)
   end
 
   def show
@@ -27,6 +28,6 @@ class EmailsController < ApplicationController
   private
 
     def email_params
-      params.require(:email).permit(:subject, :body)
+      params.require(:email).permit(:subject, :body, :template_id)
     end
 end
